@@ -2,9 +2,6 @@
 
 export default function SideMenu({ toggle, isCollapse }: any) {
 
-    console.log(isCollapse);
-
-
     const mockMenuData = [
         {
             icon: '/images/inbox.png',
