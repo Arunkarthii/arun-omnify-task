@@ -277,14 +277,16 @@ export const columns: ColumnDef<Payment>[] = [
         accessorKey: "createdOn",
         header: ({ column }) => {
             return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    <Calendar className="me-2 h-4 w-4" />
-                    Created On
+                <div>
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    >
+                        <Calendar className="me-2 h-4 w-4" />
+                        Created On
 
-                </Button>
+                    </Button>
+                </div>
             )
         },
         cell: ({ row }) => <div className="">{row.getValue("createdOn")}</div>,
@@ -308,9 +310,31 @@ export const columns: ColumnDef<Payment>[] = [
     {
         accessorKey: "status",
         header: "Status",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("status")}</div>
-        ),
+        cell: ({ row }) => {
+            const status: string = row.getValue("status");
+            switch (status) {
+                case 'Lead':
+                    return <div className="px-2 py-1 text-[#3B82F6] flex items-center w-[58px] bg-blue-100 text-xs rounded-2xl">
+                        <div className="bg-[#3B82F6] me-1 h-2 w-2 rounded-full"></div>
+                        <span>{status}</span>
+                    </div>
+                case 'Active':
+                    return <div className="px-2 py-1 text-[#15803D] w-16 flex items-center bg-green-100 text-xs rounded-2xl">
+                        <div className="bg-[#15803D] me-1 h-2 w-2 rounded-full"></div>
+                        <span>{status}</span>
+                    </div>
+                case 'Inactive':
+                    return <div className="px-2 py-1 text-[#334155] flex items-center bg-blue-100 text-xs rounded-2xl">
+                        <div className="bg-[#334155] me-1 h-2 w-2 rounded-full"></div>
+                        <span>{status}</span>
+                    </div>
+                default:
+                    return <div className="px-2 py-1 text-[#3B82F6] flex items-center bg-blue-100 text-xs rounded-2xl">
+                        <div className="bg-[#3B82F6] me-1 h-2 w-2 rounded-full"></div>
+                        <span>{status}</span>
+                    </div>
+            }
+        },
     },
     {
         accessorKey: "email",
@@ -376,35 +400,6 @@ export const columns: ColumnDef<Payment>[] = [
         },
         cell: ({ row }) => <div className="">+91 +{row.getValue("scheduled")}</div>,
     },
-    // {
-    //     id: "actions",
-    //     enableHiding: false,
-    //     cell: ({ row }) => {
-    //         const payment = row.original
-
-    //         return (
-    //             <DropdownMenu>
-    //                 <DropdownMenuTrigger asChild>
-    //                     <Button variant="ghost" className="h-8 w-8 p-0">
-    //                         <span className="sr-only">Open menu</span>
-    //                         <MoreHorizontal className="h-4 w-4" />
-    //                     </Button>
-    //                 </DropdownMenuTrigger>
-    //                 <DropdownMenuContent align="end">
-    //                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-    //                     <DropdownMenuItem
-    //                     // onClick={() => navigator.clipboard.writeText(payment.id)}
-    //                     >
-    //                         Copy payment ID
-    //                     </DropdownMenuItem>
-    //                     <DropdownMenuSeparator />
-    //                     <DropdownMenuItem>View customer</DropdownMenuItem>
-    //                     <DropdownMenuItem>View payment details</DropdownMenuItem>
-    //                 </DropdownMenuContent>
-    //             </DropdownMenu>
-    //         )
-    //     },
-    // },
 ]
 
 
@@ -481,43 +476,50 @@ export default function Outlet() {
                             <img className="h-10 ms-3 cursor-pointer" src="/images/Icon Button (1).png" alt="column" />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            {table
-                                .getAllColumns()
-                                .filter((column) => column.getCanHide())
-                                .map((column) => {
-                                    return (
-                                        <DropdownMenuCheckboxItem
-                                            key={column.id}
-                                            className="capitalize"
-                                            checked={column.getIsVisible()}
-                                            onCheckedChange={(value) =>
-                                                column.toggleVisibility(!!value)
-                                            }
-                                        >
-                                            {column.id}
-                                        </DropdownMenuCheckboxItem>
-                                    )
-                                })}
+                            <div className="w-[300px] rounded-md p-3 py-5">
+                                <h1 className="text-black font-medium">Edit Columns</h1>
+                                <p className="text-[#334155] text-sm pb-3">Select the columns to rearrange</p>
+                                {table
+                                    .getAllColumns()
+                                    .filter((column) => column.getCanHide())
+                                    .map((column) => {
+                                        return (
+                                            <>
+                                                <div className="flex items-center mb-3">
+                                                    <Checkbox
+                                                        key={column.id}
+                                                        className="capitalize"
+                                                        checked={column.getIsVisible()}
+                                                        onCheckedChange={(value) =>
+                                                            column.toggleVisibility(!!value)
+                                                        }
+                                                        aria-label="show & hide"
+                                                    />
+                                                    <p className="ms-2 capitalize py-1 px-2 border-[1px] border-slate-300 w-full rounded-md"> {column.id}</p>
+                                                </div >
+                                            </>
+                                        )
+                                    })}
+                                <div className="grid grid-cols-12 mt-5 gap-2">
+                                    <div className="col-span-6">
+                                        <button className="p-2 w-full text-black font-medium rounded-md border-[1px] border-slate-300 text-sm">Reset to Default</button>
+                                    </div>
+                                    <div className="col-span-6">
+                                        <button className="bg-black rounded-md w-full p-2 text-sm text-white font-medium">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
                         </DropdownMenuContent>
                     </DropdownMenu>
 
                     <img className="h-10 ms-3" src="/images/Icon Button.png" alt="download" />
                 </div>
-            </div>
+            </div >
             <div className="mt-5">
-                <div className="w-full">
-                    <div className="flex items-center py-4">
-                        {/* <Input
-                            placeholder="Filter emails..."
-
-
-                            className="max-w-sm"
-                        /> */}
-
-                    </div>
-                    <div className="rounded-md border">
+                <div className="">
+                    <div className="overflow-x-auto overflow-y-auto h-[380px] custom-scrollbar">
                         <Table>
-                            <TableHeader>
+                            <TableHeader className="bg-white">
                                 {table.getHeaderGroups().map((headerGroup) => (
                                     <TableRow key={headerGroup.id}>
                                         {headerGroup.headers.map((header) => {
@@ -565,12 +567,12 @@ export default function Outlet() {
                             </TableBody>
                         </Table>
                     </div>
-                    <div className="flex items-center justify-end space-x-2 py-4">
+                    <div className="flex items-center justify-end space-x-2 ">
                         <div className="flex-1 text-sm text-muted-foreground">
                             {table.getFilteredSelectedRowModel().rows.length} of{" "}
                             {table.getFilteredRowModel().rows.length} row(s) selected.
                         </div>
-                        <div className="space-x-2">
+                        <div className="flex items-center justify-end space-x-2 py-4">
                             <Button
                                 variant="outline"
                                 size="sm"
@@ -588,9 +590,10 @@ export default function Outlet() {
                                 Next
                             </Button>
                         </div>
+
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
