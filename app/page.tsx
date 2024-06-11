@@ -1,8 +1,8 @@
 "use client";
 import { AiOutlineMenu } from "react-icons/ai";
-import SideMenu from "./components/SideMenu";
+import SideMenu from "./containers/SideMenu";
 import { useEffect, useState } from "react";
-import Outlet from "./components/Outlet";
+import Outlet from "./containers/Outlet";
 
 export default function Home() {
   const [isCollapse, setIsCollapse] = useState(false)
@@ -42,7 +42,7 @@ export default function Home() {
           <span className="text-black"><AiOutlineMenu size={20} /></span>
         </div>
         <div className="px-5 py-3 md:py-10">
-          <Outlet />
+          <Outlet isCollapse={isCollapse} />
         </div>
       </div>
     </div>
