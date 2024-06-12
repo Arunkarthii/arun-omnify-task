@@ -22,6 +22,7 @@ import { CalendarIcon, SearchCheck } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import Image from 'next/image';
 
 // ScheduledDateComponent
 const ScheduledDateComponent: React.FC = () => {
@@ -157,7 +158,7 @@ const PeopleComponent: React.FC = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <img className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
+                <Image width={20} height={10} className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
             </div>
             {searchTerm ? (
                 <>
@@ -274,7 +275,7 @@ const ServiceComponent: React.FC = () => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
-                            <img className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
+                            <Image height={10} width={20} className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
                         </div>
                         {searchTerm ? (
                             <>

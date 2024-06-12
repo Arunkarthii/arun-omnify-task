@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/table"
 import { columns, paymentData } from "@/components/columns"
 import PeopleComponent, { ScheduledDateComponent, ServiceComponent } from "@/components/filerComponent"
+import Image from "next/image"
 
 export default function Outlet({ isCollapse }: any) {
     const [selectedFilter, setSelectedFilter] = React.useState('scheduledDate')
@@ -90,7 +91,7 @@ export default function Outlet({ isCollapse }: any) {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <button className="border-none mb-5 md:mb-0 p-2 h-10 shadow text-sm text-[#334155] font-medium bg-slate-50 rounded-md flex items-center">
-                            <img className="h-4 me-2" src="/images/filter.png" alt="filter" />
+                            <Image width={15} height={10} className="h-4 me-2" src="/images/filter.png" alt="filter" />
                             Add Filter
                         </button>
                     </DropdownMenuTrigger>
@@ -99,15 +100,15 @@ export default function Outlet({ isCollapse }: any) {
                             <div className="grid grid-cols-12 h-[360px]">
                                 <div className="col-span-12 md:col-span-5 p-2 bg-slate-100">
                                     <div onClick={() => setSelectedFilter('scheduledDate')} className={`p-2 mb-2 rounded-md flex items-center cursor-pointer ${selectedFilter === 'scheduledDate' ? 'bg-slate-300' : 'hover:bg-slate-300 '}`}>
-                                        <img className='h-4' src="/images/calendar-days.png" alt="calender" />
+                                        <Image width={15} height={10} className='h-4' src="/images/calendar-days.png" alt="calender" />
                                         <p className="text-sm ms-2 font-medium">Scheduled Date</p>
                                     </div>
                                     <div onClick={() => setSelectedFilter('people')} className={`p-2 mb-2 rounded-md flex items-center cursor-pointer ${selectedFilter === 'people' ? 'bg-slate-300' : 'hover:bg-slate-300 '}`}>
-                                        <img className='h-4' src="/images/users.png" alt="users" />
+                                        <Image width={15} height={10} className='h-4' src="/images/users.png" alt="users" />
                                         <p className="text-sm ms-2 font-medium">People</p>
                                     </div>
                                     <div onClick={() => setSelectedFilter('service')} className={`p-2 mb-2 rounded-md flex items-center cursor-pointer ${selectedFilter === 'service' ? 'bg-slate-300' : 'hover:bg-slate-300 '}`}>
-                                        <img className='h-4' src="/images/layout-dashboard.png" alt="layout" />
+                                        <Image width={15} height={10} className='h-4' src="/images/layout-dashboard.png" alt="layout" />
                                         <p className="text-sm ms-2 font-medium">Services / Products</p>
                                     </div>
                                 </div>
@@ -138,12 +139,12 @@ export default function Outlet({ isCollapse }: any) {
                             }
                             placeholder="Search client"
                         />
-                        <img className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
+                        <Image height={10} width={20} className="h-5 absolute top-[10px] left-2" src="/images/search.png" alt="search" />
                     </div>
-                    <img className="h-10 ms-3" src="/images/Icon Button (2).png" alt="reload" />
+                    <Image height={10} width={40} className="h-10 ms-3" src="/images/Icon Button (2).png" alt="reload" />
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <img className="h-10 ms-3 cursor-pointer" src="/images/Icon Button (1).png" alt="column" />
+                            <Image height={10} width={45} className="h-10 ms-3 cursor-pointer" src="/images/Icon Button (1).png" alt="column" />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <div className="w-[300px] rounded-md p-3 py-5">
@@ -182,7 +183,7 @@ export default function Outlet({ isCollapse }: any) {
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    <img className="h-10 ms-3 hidden md:block" src="/images/Icon Button.png" alt="download" />
+                    <Image height={10} width={40} className="h-10 ms-3 hidden md:block" src="/images/Icon Button.png" alt="download" />
                 </div>
             </div >
             <div className="mt-5">

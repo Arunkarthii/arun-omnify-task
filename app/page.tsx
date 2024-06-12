@@ -3,6 +3,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import SideMenu from "./containers/SideMenu";
 import { useEffect, useState } from "react";
 import Outlet from "./containers/Outlet";
+import Image from "next/image";
 
 export default function Home() {
   const [isCollapse, setIsCollapse] = useState(false)
@@ -37,7 +38,7 @@ export default function Home() {
       <div className="bg-slate-100 w-full">
         <div className="md:hidden bg-white m-5 p-5 flex justify-between items-center rounded-md">
           <div className="flex items-center">
-            <img className="h-8" src="/images/Rectangle-85-+-Group-Copy-21.png" alt="logo" />
+            <Image height={10} width={30} className="h-8" src="/images/Rectangle-85-+-Group-Copy-21.png" alt="logo" />
             <h1 className="text-black text-lg ms-2 font-bold">Front.Desk</h1>
           </div>
           <span onClick={() => setOpenModal(true)} className="text-black"><AiOutlineMenu size={20} /></span>
