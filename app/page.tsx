@@ -6,6 +6,7 @@ import Outlet from "./containers/Outlet";
 
 export default function Home() {
   const [isCollapse, setIsCollapse] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
 
   const handleCollapse = () => {
     setIsCollapse(!isCollapse)
@@ -39,11 +40,20 @@ export default function Home() {
             <img className="h-8" src="/images/Rectangle-85-+-Group-Copy-21.png" alt="logo" />
             <h1 className="text-black text-lg ms-2 font-bold">Front.Desk</h1>
           </div>
-          <span className="text-black"><AiOutlineMenu size={20} /></span>
+          <span onClick={() => setOpenModal(true)} className="text-black"><AiOutlineMenu size={20} /></span>
         </div>
+
         <div className="px-5 py-3 md:py-10">
           <Outlet isCollapse={isCollapse} />
         </div>
+
+        {openModal && (
+          <div onClick={() => setOpenModal(false)} className="fixed top-0 right-0 w-full bg-black/60" >
+            <div className="bg-white relative w-[80%] sm:w-[50%] md:w-[40%] h-screen flex flex-col justify-between text-black">
+              <SideMenu />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -86,10 +86,10 @@ export default function Outlet({ isCollapse }: any) {
                     <h1 className="font-medium">Leads <span className="text-[#334155] font-normal text-xs ms-1">20</span></h1>
                 </div>
             </div>
-            <div className="mt-8 flex justify-between items-center">
+            <div className="mt-8 flex flex-col md:flex-row justify-between items-start md:items-center">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <button className="border-none p-2 h-10 shadow text-sm text-[#334155] font-medium bg-slate-50 rounded-md flex items-center">
+                        <button className="border-none mb-5 md:mb-0 p-2 h-10 shadow text-sm text-[#334155] font-medium bg-slate-50 rounded-md flex items-center">
                             <img className="h-4 me-2" src="/images/filter.png" alt="filter" />
                             Add Filter
                         </button>
@@ -182,12 +182,12 @@ export default function Outlet({ isCollapse }: any) {
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    <img className="h-10 ms-3" src="/images/Icon Button.png" alt="download" />
+                    <img className="h-10 ms-3 hidden md:block" src="/images/Icon Button.png" alt="download" />
                 </div>
             </div >
             <div className="mt-5">
                 <div className="">
-                    <div className={`overflow-x-auto overflow-y-auto h-[380px]  custom-scrollbar ${isCollapse ? 'w-[calc(100vw-135px)] ' : 'w-[calc(100vw-324px)] '}`}>
+                    <div className={`overflow-x-auto overflow-y-auto h-[380px] custom-scrollbar ${isCollapse ? 'w-full md:w-[calc(100vw-135px)] ' : 'w-full md:w-[calc(100vw-324px)] '}`}>
                         <Table>
                             <TableHeader className="bg-white">
                                 {table.getHeaderGroups().map((headerGroup) => (

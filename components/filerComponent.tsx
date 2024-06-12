@@ -323,7 +323,36 @@ const ServiceComponent: React.FC = () => {
                     </div>
                 </div>
             ) : (
-                null
+                <>
+                    <div className='mb-5 mt-5'>
+                        <p className='text-xs font-medium mb-2'>Service type</p>
+                        <Select>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Show all service type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Class">Class</SelectItem>
+                                <SelectItem value="Appointment">Appointment</SelectItem>
+                                <SelectItem value="Falicity">Falicity</SelectItem>
+                                <SelectItem value="ClassPack">Class Pack</SelectItem>
+                                <SelectItem value="Membership">Membership</SelectItem>
+                                <SelectItem value="General">General Items</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <p className='text-xs font-medium mb-2'>Status</p>
+                    <Select>
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Show all" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Public">Public</SelectItem>
+                            <SelectItem value="Private">Private</SelectItem>
+                            <SelectItem value="Disable">Disable</SelectItem>
+                            <SelectItem value="Draft">Draft</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </>
             )}
 
         </>
