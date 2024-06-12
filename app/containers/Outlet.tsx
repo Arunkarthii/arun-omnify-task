@@ -96,8 +96,8 @@ export default function Outlet({ isCollapse }: any) {
                         </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="p-0 m-0">
-                        <div className="w-[650px] rounded-md">
-                            <div className="grid grid-cols-12 h-[360px]">
+                        <div className="w-full md:w-[650px] rounded-md">
+                            <div className="grid grid-cols-12 h-full md:h-[360px]">
                                 <div className="col-span-12 md:col-span-5 p-2 bg-slate-100">
                                     <div onClick={() => setSelectedFilter('scheduledDate')} className={`p-2 mb-2 rounded-md flex items-center cursor-pointer ${selectedFilter === 'scheduledDate' ? 'bg-slate-300' : 'hover:bg-slate-300 '}`}>
                                         <Image width={15} height={10} className='h-4' src="/images/calendar-days.png" alt="calender" />

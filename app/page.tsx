@@ -31,7 +31,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <div className={`bg-[#F8FAFC] hidden md:block transition-all duration-300 ease-in-out ${isCollapse ? 'w-[100px]' : 'w-[350px]'}`}>
         <SideMenu isCollapse={isCollapse} toggle={handleCollapse} />
       </div>
